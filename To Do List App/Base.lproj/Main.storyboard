@@ -88,7 +88,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="To Do List " id="byf-Dz-bNH">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="USN-tw-jsY"/>
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="USN-tw-jsY">
+                            <connections>
+                                <action selector="editBarButtonPressed:" destination="BYZ-38-t0r" id="qYq-4g-aa6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="b6p-bl-5Y9">
                             <connections>
                                 <segue destination="Go6-3k-qRz" kind="presentation" identifier="AddItem" id="QSL-em-yAg"/>
@@ -96,6 +100,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="EditBarButton" destination="USN-tw-jsY" id="OqJ-uM-kVJ"/>
+                        <outlet property="addBarButton" destination="b6p-bl-5Y9" id="52m-Mk-fbT"/>
                         <outlet property="tableview" destination="Pwl-KN-WLI" id="ZKO-1Y-TGD"/>
                     </connections>
                 </viewController>

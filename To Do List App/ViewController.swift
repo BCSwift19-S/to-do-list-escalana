@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     var toDoArray = ["Learn Swift", "Build Apps", "Change the World"]
     
+    @IBOutlet weak var EditBarButton: UIBarButtonItem!
+    
+    
+    @IBOutlet weak var addBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,17 @@ class ViewController: UIViewController {
             tableview.insertRows(at: [newIndexPath], with: .automatic)
         }
     }
+    @IBAction func editBarButtonPressed(_ sender: UIBarButtonItem) {
+        if tableview.isEditing{
+            tableview.setEditing(false, animated: true) // not exactly following this line
+            addBarButton.isEnabled = true
+            EditBarButton.title = "Edit"
+        }else{
+            tableview.setEditing(true, animated: true)
+            addBarButton.isEnabled = false
+            EditBarButton.title = "Done"
+        }
+    }
 }
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,4 +68,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         cell.textLabel?.text = toDoArray[indexPath.row]
         return cell
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            toDoArray.remove(at: indexPath.row)
+            tableview.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let itemToMove = toDoArray[sourceIndexPath.row]
+        toDoArray.remove(at: sourceIndexPath.row)
+        toDoArray.insert(itemToMove, at: destinationIndexPath.row)
+    
+    }
+    
 }
