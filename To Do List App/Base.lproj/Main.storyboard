@@ -31,6 +31,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="toDoFieldChanged:" destination="09l-YT-YRr" eventType="editingChanged" id="M5j-bV-ZIj"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,6 +52,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="saveBarButton" destination="uDB-JE-408" id="rE5-Jb-Roe"/>
                         <outlet property="toDoField" destination="Vfk-we-ZGE" id="NKh-qk-kpF"/>
                     </connections>
                 </viewController>
